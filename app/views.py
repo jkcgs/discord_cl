@@ -3,7 +3,8 @@ import os
 import codecs
 
 import markdown
-from django.http import HttpResponseNotFound, HttpResponse
+import sys
+from django.http import HttpResponseNotFound, HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.shortcuts import render, redirect
 from django.conf import settings
 from os import path
@@ -41,13 +42,13 @@ def oauth_return(request):
     code = request.GET.get('code', '')
     state = request.GET.get('state', '')
     if code == '' or state == '':
-        return HttpResponse(status=400)
+        return HttpResponseBadRequest()
 
     if state != request.session['oauth_state']:
-        print('Wrong state code: {} vs '.format(state, request.session['oauth_state']))
-        return HttpResponse(status=400)
+        return HttpResponseForbidden()
 
-    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+    if sys.argv[1] == 'runserver':
+        os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
     try:
         token = oauth.fetch_token(api_base + '/oauth2/token', code=code, client_secret=client_secret)
