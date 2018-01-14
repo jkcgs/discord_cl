@@ -2,12 +2,13 @@ import json
 import os
 import codecs
 
-import markdown
+from markdown import markdown
 import sys
-from django.http import HttpResponseNotFound, HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
+from django.http import HttpResponseBadRequest, HttpResponseForbidden
 from django.shortcuts import render, redirect
 from django.conf import settings
 from os import path
+from datetime import datetime
 
 from oauthlib.oauth2 import InvalidGrantError
 from requests_oauthlib import OAuth2Session
@@ -77,21 +78,33 @@ def logout(request):
     return redirect('/')
 
 
-def pages(request, page_name='index', webvars=None):
+def pages(request, page_name='index'):
     page_path = '{}/pages/{}.md'.format(path.dirname(__file__), page_name)
-    if not path.exists(page_path):
-        return HttpResponseNotFound('<h1>Page not found</h1>')
+    page_path_html = '{}/pages/{}.html'.format(path.dirname(__file__), page_name)
 
-    input_file = codecs.open(page_path, mode="r", encoding="utf-8")
-    text = input_file.read()
+    status = 200
+    base_file = 'base_md.html'
 
-    if webvars is None:
-        webvars = {}
+    if path.exists(page_path):
+        input_file = codecs.open(page_path, mode="r", encoding="utf-8").read()
+        text = markdown(input_file)
+    else:
+        if not path.exists(page_path_html):
+            return handler404(request, None)
 
-    return render(request, 'pages.html', {
+        base_file = path.basename(page_path_html)
+        text = ''
+
+    return render(request, base_file, {
         'title': page_name.replace('_', ' ').replace('-', ' ').title(),
-        'content': markdown.markdown(text).format(**webvars)
-    })
+        'content': text,
+        'pagename': page_name,
+        'current_date': datetime.now()
+    }, status=status)
+
+
+def handler404(request, exception):
+    return pages(request, page_name='404')
 
 
 def logged_in(request):

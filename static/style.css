@@ -1,0 +1,17 @@
+ol.padded li:not(:last-child) {
+    padding-bottom: 0.5rem;
+}
+
+.is-padded-top {
+    padding-top: 1rem;
+}
+
+.is-spaced-top {
+    margin-top: 1rem;
+}
+
+.img-circle {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}

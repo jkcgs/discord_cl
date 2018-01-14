@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block header %}
+  <section class="hero is-dark is-bold has-text-centered">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          {% block hero_title %}{% endblock %}
+        </h1>
+        <h2 class="subtitle">
+          {% block hero_subtitle %}{% endblock %}
+        </h2>
+        {% block hero_content %}{% endblock %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
