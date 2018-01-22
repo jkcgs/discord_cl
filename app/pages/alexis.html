@@ -20,9 +20,40 @@
   </a>
 {% endblock %}
 {% block content %}
-  <p>
-    ¿Me creerían si les dijera que pueden tener en su server un bot que puede hacer cosas que no te imaginas
-    que haría? Yo tampoco, así que no las hace. Comandos básicos como ver el clima, y obtener un perrito o un gatito
-    aleatorio. Y no sé qué más la verdad. Tiene tantas cosas que se me olvidan.
-  </p>
+  <div class="columns is-mobile is-centered">
+    <div class="column is-two-thirds is-narrow has-text-justified content">
+      <p>
+        ¿Me creerían si les dijera que pueden tener en su server un bot que puede hacer cosas que no te imaginarías
+        que haría? Yo tampoco, así que no las hace. Comandos básicos como ver el clima y obtener perritos y gatitos
+        de forma aleatoria. Y no sé qué más la verdad. Tiene tantas cosas que se me olvidan.
+      </p>
+      <p>
+        AlexisBot ha sido desarrollado por <strong>ibk</strong> y <strong>makzk</strong> (quien lleva el desarrollo
+        actualmente) principalmente para nuestro servidor de Discord, pero actualmente está siendo modularizado y
+        cambiado de modo de poder utilizarlo en distintos servidores, incluyendo soporte para varios idiomas, entre
+        otros.
+      </p>
+      <h3>Historia</h3>
+      <p>
+        Cuando éramos un servidor con pocas personas activas, siempre bromeábamos con banear a alguien cuando hacía
+        alguna estupidez, entonces quisimos implementar un servidor que tan sólo llevara la cuenta de cuántas veces
+        una persona era merecedora de un ban. Luego de un par de días, <em>ibk</em> creó al bot con sólo el comando
+        <strong>!ban</strong>, y que tenía el 50% de "banear" a un usuario o no, además del comando para listar los
+        usuarios con más bans.
+      </p>
+      <p>
+        Luego de ello, iban surgiendo otras necesidades, como por ejemplo mostrar una imagen la cual frecuentemente
+        aparecía en los chats, mediante un comando. En un principio se implementó un comando por dichas imágenes y,
+        a las que después se les sumaron frases. Ya que con el tiempo la cantidad de "macros" (como les llamamos ya
+        después de esto) fue muy grande para manejarlas comando por comando, así que <em>makzk</em> implementó otro
+        sistema modular para gestionar macros, mediante el comando <strong>!set</strong>, para después generar otro
+        comando <strong>!iset</strong> más potente que generaría mensajes <em>embed</em>.
+      </p>
+      <p>
+        Por último, luego de que <em>makzk</em> tomara en definitiva el desarrollo del bot, se agregó un sistema de
+        comandos modular, que facilita el desarrollo de comandos (ahora llamados <em>módulos</em>), disminuyendo en
+        gran parte la creación de los mismos, simplificando tareas repetitivas.
+      </p>
+    </div>
+  </div>
 {% endblock %}
