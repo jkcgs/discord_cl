@@ -25,6 +25,7 @@ normas de conducta, pudiendo nosotros intervenir si una comunidad no las sigue.
 Dicho esto, vamos a los lineamientos de la comunidad.
 
 **Lo siguiente es genial**:
+
 * Jugar con tus amigos.
 * Participar en comunidades.
 * Establecer conexiones y divertirse.

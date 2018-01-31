@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-  <div class="content">
-    {{ content | safe }}
+  <div class="columns is-mobile is-centered">
+    <div class="column is-two-thirds is-narrow has-text-justified content">
+      <div class="content">
+        {{ content | safe }}
+      </div>
+    </div>
   </div>
 {% endblock %}
