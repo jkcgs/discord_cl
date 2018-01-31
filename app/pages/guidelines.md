@@ -51,20 +51,20 @@ solicitudes DCMA, tal como se describe en nuestros Términos de Servicio.
 * Compartir contenido que glorifiquen o promuevan, de manera general, el
 autolesionarse o el suicidio. Esto incluye cualquier contenido que inste a otros
 a: cortarse o hacerse daño; incentivar a la anorexia, bulimia, o cualquier otro
-desorden almenticio; o cometer suicidio en vez de, por ejemplo, buscar consejo
+desorden alimenticio; o cometer suicidio en vez de, por ejemplo, buscar contención
 o tratamiento. Las comunidades en línea tienen el poder de ayudar a las personas
-y sacarla de estos males - se el tipo de persona que ayuda a los demás. Si
+y sacarla de estos males - sé el tipo de persona que ayuda a los demás. Si
 encuentras a alguien que necesita ayuda de manera urgente, por favor contacta
 a las autoridades locales.
 * El spam hacia el equipo de soporte o de confianza y seguiridad. No utilices
 esos canales para hacer falsos reportes o spammear múltiples reportes a Discord.
-Estamos comprometidos en cada uno de ellos una vez que llegan para resolverlos
+Estamos comprometidos con cada uno de ellos una vez que llegan para resolverlos
 lo antes posible.
 * No marcar canales NSFW de manera adecuada. Existe contenido que no es apropiado
 para menores de 18 años, así que hagamos las cosas bien en nuestra comunidad y
 [marquemos cualquier canal con contenido para adultos como NSFW](https://support.discordapp.com/hc/en-us/articles/115000084051).
 Esto agregará una advertencia al canal, protegiendo a aquellos que no quieren ver.
-* Compartir imágenes de gore y/o cruendad hacia los animales. No compartas o
+* Compartir imágenes de gore y/o crueldad hacia los animales. No compartas o
 publiques contenido gráfico por placer sadístico, glorificación o celebración
 de la violencia.
 
@@ -72,17 +72,17 @@ de la violencia.
 contenido y eliminación de cuenta de forma inmediata:**
 
 * Compartir contenido directamente relacionado en amenazar a otro por su estado
-físico o financiero. No amenaces o hagas daño a otro o a su familia en cualquier
-sitación. No le digas a otras personas que les harás daño o que los matarás. No
-doxees a otras personas. No compartas o amenaces con compartir la información
+físico o financiero. No amenaces o hagas daño a otros o a su familia en cualquier
+situación. No le digas a otras personas que les harás daño o que los matarás. No
+investigues a otras personas. No compartas o amenaces con compartir la información
 personal de otro usuario - esto incluye, pero no está limitado a su dirección,
-número telefónico, email, número de seguridad social y fotos. Respeta el deseo
-de privacidad de otras personas.
+número telefónico, correo electrónico, número de seguridad social, y fotos. Respeta
+el deseo de privacidad de otras personas.
 * Realizar cualquier actividad ilegal en Discord. Esto viene directamente desde
 nuestros [Términos del Servicio](https://discordapp.com/terms).
 Tomaremos acciones inmediatas en el caso de que: violes cualquier ley o 
-regulación aplicable, o promuevas e incentives cualquier actividad ilegal,
-incluyendo pero no limitado a hackeo, creackeo o distrubición de software
+regulación aplicable, o promuevas e incentives cualquier actividad ilegal
+incluyendo, pero no limitado a, hackeo, crackeo o distrubición de software
 pirateado, o cheats o hacks para nuestra o cualquier otra compañía o personas
 de nuestro Servicio.
 * Compartir contenido sexualmente sugerente o violento relacionado a menores.
@@ -94,7 +94,7 @@ a otro individuo. No compartas contenido sexualmente explícito de otras
 personas sin su consentimiento. No compartas o promuevas el porno vengativo.
 * Distribuir viruses. No te involucres o promuevas actividades de phishing.
 No amenaces a otros usuarios con dañarlos digitalmente, incluyendo pero no
-limitado a viruses, hackeos, y espiar.
+limitado a viruses, hackeos, y espionaje.
 * Intentar robar la cuenta de otro usuario.
 
 Para reportar cualquiera de las actividades anteriores, por favor envía un
