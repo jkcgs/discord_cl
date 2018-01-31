@@ -1,8 +1,9 @@
+# Lineamientos de la comunidad de Discord
 
 *Esta es una versión traducida (no oficial) del documento [Discord Community Guidelines](https://discordapp.com/guidelines)
 que ponemos a disposición de la comunidad en Español.*
 
-*Última actualización de la traducción: __poner fecha aquí__*
+*Última actualización de la traducción: __31 de enero de 2018__*
 
 ---
 
