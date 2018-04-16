@@ -13,6 +13,8 @@ from datetime import datetime
 from oauthlib.oauth2 import InvalidGrantError
 from requests_oauthlib import OAuth2Session
 
+from .models import DiscordAdmin
+
 api_base = 'https://discordapp.com/api/v6'
 client_id = settings.DISCORD_CLIENT_ID
 client_secret = settings.DISCORD_CLIENT_SECRET
@@ -57,8 +59,13 @@ def oauth_return(request):
         return redirect('/?error=invalid_grant')
 
     r = oauth.get(api_base + '/users/@me')
-    request.session['user_info'] = str(r.text)
-    return redirect('/user')
+    data = json.loads(r.text)
+    try:
+        DiscordAdmin.objects.get(userid=data['id'])
+        request.session['user_info'] = data
+        return redirect('/user')
+    except DiscordAdmin.DoesNotExist:
+        return redirect('/')
 
 
 def user(request):
@@ -66,9 +73,9 @@ def user(request):
         return redirect('/?error=not_logged')
 
     info = request.session['user_info']
-    print('raw_info: ' + info)
+    print('raw_info: ' + str(info))
     return render(request, 'user.html', {
-        'info': json.loads(info),
+        'info': info,
         'raw_info': info
     })
 
@@ -95,7 +102,6 @@ def pages(request, page_name='index'):
         base_file = path.basename(page_path_html)
         text = ''
 
-    print(base_file)
     return render(request, base_file, {
         'title': page_name.replace('_', ' ').replace('-', ' ').title(),
         'content': text,
