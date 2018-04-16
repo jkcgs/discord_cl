@@ -95,12 +95,17 @@ def pages(request, page_name='index'):
         base_file = path.basename(page_path_html)
         text = ''
 
+    print(base_file)
     return render(request, base_file, {
         'title': page_name.replace('_', ' ').replace('-', ' ').title(),
         'content': text,
         'pagename': page_name,
         'current_date': datetime.now()
     }, status=status)
+
+
+def pages_redirect(request, page_name='index'):
+    return redirect('/' + page_name)
 
 
 def handler404(request, exception):

@@ -72,10 +72,10 @@ fabric.properties
 ### PyCharm Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
-# *.iml
-# modules.xml
-# .idea/misc.xml
-# *.ipr
+*.iml
+modules.xml
+.idea/misc.xml
+*.ipr
 
 # Sonarlint plugin
 .idea/sonarlint
@@ -182,7 +182,6 @@ venv.bak/
 ### VirtualEnv ###
 # Virtualenv
 # http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
-.Python
 [Bb]in
 [Ii]nclude
 [Ll]ib
@@ -192,7 +191,6 @@ venv.bak/
 [Ss]cripts
 [Tt]cl
 pyvenv.cfg
-.venv
 pip-selfcheck.json
 
 # End of https://www.gitignore.io/api/pycharm,python,django
