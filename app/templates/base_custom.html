@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ title }}{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+  {% block head %}{% endblock %}
+</head>
+<body>
+<nav class="navbar is-fixed-top is-dark">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        Discord.cl
+      </a>
+      <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+    </div>
+    <div id="navbarMenuHeroA" class="navbar-menu">
+      <div class="navbar-end">
+        <a href="/" class="navbar-item{% if pagename == "index" %} is-active{% endif %}">
+          Inicio
+        </a>
+        <a href="/pages/rules" class="navbar-item{% if pagename == "rules" %} is-active{% endif %}">
+          Reglas
+        </a>
+        <a href="/pages/alexis" class="navbar-item{% if pagename == "alexis" %} is-active{% endif %}">
+          AlexisBot
+        </a>
+        <a href="/oauth/login" class="navbar-item">
+          Login
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+{% block header %}{% endblock %}
+
+<section class="section">
+  <div class="container">
+    {% block content %}
+      {{ content | safe }}
+    {% endblock %}
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        Discord.cl &copy; {{ current_date.year }}<br>
+        Esta página no está relacionada con <a href="https://discordapp.com/">Discord</a>
+        (pero deberías probar su aplicación, ¡es buenísima!).
+      </p>
+    </div>
+  </div>
+</footer>
+
+{% block footer %}{% endblock %}
+</body>
+</html>

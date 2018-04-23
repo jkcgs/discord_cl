@@ -4,7 +4,10 @@ import codecs
 
 from markdown import markdown
 import sys
-from django.http import HttpResponseBadRequest, HttpResponseForbidden
+from django.http import HttpResponseBadRequest, HttpResponseForbidden, HttpResponse
+from rest_framework import viewsets
+
+from .serializers import BotCommandEntrySerializer
 from django.shortcuts import render, redirect
 from django.conf import settings
 from os import path
@@ -13,7 +16,7 @@ from datetime import datetime
 from oauthlib.oauth2 import InvalidGrantError
 from requests_oauthlib import OAuth2Session
 
-from .models import DiscordAdmin
+from .models import DiscordAdmin, BotCommandEntry
 
 api_base = 'https://discordapp.com/api/v6'
 client_id = settings.DISCORD_CLIENT_ID
@@ -120,3 +123,8 @@ def handler404(request, exception):
 
 def logged_in(request):
     return 'user_info' in request.session and request.session['user_info'] != ''
+
+
+class BotCommandEntryViewSet(viewsets.ModelViewSet):
+    queryset = BotCommandEntry.objects.all()
+    serializer_class = BotCommandEntrySerializer
