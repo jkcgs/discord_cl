@@ -6,4 +6,4 @@ class BotCommandEntrySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = BotCommandEntry
         fields = ('name', 'entry_lang', 'aliases', 'owner_only', 'bot_owner_only',
-                  'allows_pm', 'description', 'usage', 'config_help')
+                  'allows_pm', 'description', 'short_desc', 'usage', 'config_help')

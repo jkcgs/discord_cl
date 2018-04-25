@@ -19,6 +19,7 @@ class BotCommandEntry(models.Model):
     owner_only = models.BooleanField(default=False)
     bot_owner_only = models.BooleanField(default=False)
     allows_pm = models.BooleanField(default=True, verbose_name='Allows PM')
+    short_desc = models.TextField(default='', blank=True)
     description = models.TextField(default='', blank=True)
     usage = models.TextField(default='', blank=True)
     config_help = models.TextField(default='', blank=True)
