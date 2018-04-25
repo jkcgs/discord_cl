@@ -82,7 +82,7 @@ def oauth_return(request):
     if state != request.session['oauth_state']:
         return HttpResponseForbidden()
 
-    if sys.argv[1] == 'runserver':
+    if len(sys.argv) > 1 and sys.argv[1] == 'runserver':
         os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
     try:
