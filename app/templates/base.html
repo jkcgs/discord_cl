@@ -1,4 +1,4 @@
-ª{% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html class="has-navbar-fixed-top">
   <head>
@@ -33,9 +33,18 @@
           <a href="/pages/alexis" class="navbar-item{% if pagename == "alexis" %} is-active{% endif %}">
             AlexisBot
           </a>
+          {% if not request.session.logged %}
           <a href="/oauth/login" class="navbar-item">
             Login
           </a>
+          {% else %}
+          <a href="/logout" class="navbar-item">
+            <figure class="image is-24x24">
+                <img src="{{ user.avatar }}" alt="Avatar" title="{{ user.name }}">
+            </figure>
+              &nbsp;Logout
+          </a>
+          {% endif %}
         </div>
       </div>
     </div>

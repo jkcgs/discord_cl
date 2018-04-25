@@ -29,65 +29,6 @@ def index(request):
     return pages(request)
 
 
-def oauth_login(request):
-    if client_id == '' or client_secret == '' or redirect_uri == '':
-        raise RuntimeError('Discord not properly set up, check DISCORD_* variables at settings.py')
-
-    if logged_in(request):
-        return redirect('/user')
-
-    login_url, state = oauth.authorization_url(api_base + '/oauth2/authorize')
-    request.session['oauth_state'] = state
-    return redirect(login_url)
-
-
-def oauth_return(request):
-    if client_id == '' or client_secret == '' or redirect_uri == '':
-        raise RuntimeError('Discord not properly set up, check DISCORD_* variables at settings.py')
-
-    code = request.GET.get('code', '')
-    state = request.GET.get('state', '')
-    if code == '' or state == '':
-        return HttpResponseBadRequest()
-
-    if state != request.session['oauth_state']:
-        return HttpResponseForbidden()
-
-    if sys.argv[1] == 'runserver':
-        os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-
-    try:
-        token = oauth.fetch_token(api_base + '/oauth2/token', code=code, client_secret=client_secret)
-    except InvalidGrantError:
-        return redirect('/?error=invalid_grant')
-
-    r = oauth.get(api_base + '/users/@me')
-    data = json.loads(r.text)
-    try:
-        DiscordAdmin.objects.get(userid=data['id'])
-        request.session['user_info'] = data
-        return redirect('/user')
-    except DiscordAdmin.DoesNotExist:
-        return redirect('/')
-
-
-def user(request):
-    if not logged_in(request):
-        return redirect('/?error=not_logged')
-
-    info = request.session['user_info']
-    print('raw_info: ' + str(info))
-    return render(request, 'user.html', {
-        'info': info,
-        'raw_info': info
-    })
-
-
-def logout(request):
-    del request.session['user_info']
-    return redirect('/')
-
-
 def pages(request, page_name='index'):
     page_path = '{}/pages/{}.md'.format(path.dirname(__file__), page_name)
     page_path_html = '{}/pages/{}.html'.format(path.dirname(__file__), page_name)
@@ -115,6 +56,55 @@ def pages(request, page_name='index'):
 
 def pages_redirect(request, page_name='index'):
     return redirect('/' + page_name)
+
+
+def oauth_login(request):
+    if client_id == '' or client_secret == '' or redirect_uri == '':
+        raise RuntimeError('Discord not properly set up, check DISCORD_* variables at settings.py')
+
+    if logged_in(request):
+        return redirect('/')
+
+    login_url, state = oauth.authorization_url(api_base + '/oauth2/authorize')
+    request.session['oauth_state'] = state
+    return redirect(login_url)
+
+
+def oauth_return(request):
+    if client_id == '' or client_secret == '' or redirect_uri == '':
+        raise RuntimeError('Discord not properly set up, check DISCORD_* variables at settings.py')
+
+    code = request.GET.get('code', '')
+    state = request.GET.get('state', '')
+    if code == '' or state == '':
+        return HttpResponseBadRequest()
+
+    if state != request.session['oauth_state']:
+        return HttpResponseForbidden()
+
+    if sys.argv[1] == 'runserver':
+        os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
+    try:
+        oauth.fetch_token(api_base + '/oauth2/token', code=code, client_secret=client_secret)
+    except InvalidGrantError:
+        return redirect('/?error=invalid_grant')
+
+    r = oauth.get(api_base + '/users/@me')
+    data = json.loads(r.text)
+    try:
+        DiscordAdmin.objects.get(userid=data['id'])
+        request.session['user_info'] = data
+        request.session['logged'] = True
+        return redirect('/')
+    except DiscordAdmin.DoesNotExist:
+        return redirect('/?error=not_authorized')
+
+
+def logout(request):
+    del request.session['user_info']
+    del request.session['logged']
+    return redirect('/')
 
 
 def handler404(request, exception):
