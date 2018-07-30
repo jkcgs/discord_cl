@@ -101,13 +101,17 @@ def oauth_return(request):
         return redirect('/?error=not_authorized')
 
 
+def alexis_redir(_):
+    return redirect('/pages/bot')
+
+
 def logout(request):
     del request.session['user_info']
     del request.session['logged']
     return redirect('/')
 
 
-def handler404(request, exception):
+def handler404(request, _):
     return pages(request, page_name='404')
 
 

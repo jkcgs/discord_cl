@@ -16,7 +16,7 @@
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
-        Discord.cl
+        Discord.CL
       </a>
       <span class="navbar-burger burger" data-target="navbarMenuHeroA">
           <span></span>
@@ -29,18 +29,18 @@
         <a href="/" class="navbar-item{% if pagename == "index" %} is-active{% endif %}">
           Inicio
         </a>
-        <a href="/pages/rules" class="navbar-item{% if pagename == "rules" %} is-active{% endif %}">
+        <a href="{% url 'pages' 'rules' %}" class="navbar-item{% if pagename == "rules" %} is-active{% endif %}">
           Reglas
         </a>
-        <a href="/pages/alexis" class="navbar-item{% if pagename == "alexis" %} is-active{% endif %}">
+        <a href="{% url 'pages' 'bot' %}" class="navbar-item{% if pagename == "bot" %} is-active{% endif %}">
           AlexisBot
         </a>
           {% if not request.session.logged %}
-          <a href="/oauth/login" class="navbar-item">
+          <a href="{% url 'oauth_login' %}" class="navbar-item">
             Login
           </a>
           {% else %}
-          <a href="/logout" class="navbar-item">
+          <a href="{% url 'logout' %}" class="navbar-item">
             <img src="{{ user.avatar }}" class="is-24x24" alt="Avatar" title="{{ user.name }}">
               &nbsp;Logout
           </a>
