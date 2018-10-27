@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if not pages %}
+        No hay páginas disponibles
+    {% endif %}
+
+    <ul>
+    {% for p in pages %}
+        <li>{{ p.title }}</li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
