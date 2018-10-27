@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% block header %}
-  <section class="hero is-dark is-bold has-text-centered">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          {% block hero_title %}{% endblock %}
-        </h1>
-        <h2 class="subtitle">
-          {% block hero_subtitle %}{% endblock %}
-        </h2>
+  <div class="jumbotron-fluid bg-gdark text-light mb-5 pt-4 {% block hero_classes %}text-center{% endblock %}">
+    <div class="container">
+      <h1 class="display-5">
+        {% block hero_title %}{% endblock %}
+      </h1>
+      <p class="lead">
+        {% block hero_subtitle %}{% endblock %}
+      </p>
+      <div class="pt-2 pb-4">
         {% block hero_content %}{% endblock %}
       </div>
     </div>
-  </section>
+  </div>
 {% endblock %}

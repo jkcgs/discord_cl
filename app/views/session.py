@@ -61,6 +61,11 @@ def oauth_return(request):
         adm = DiscordAdmin.objects.get(userid=data['id'])
         request.session['user_info'] = data
         request.session['logged'] = True
+        request.session['username'] = data['username']
+        request.session['avatar'] = avatar_url(data)
+
+        adm.nick = data['username']
+        adm.save()
 
         if adm.dj_user is not None:
             login(request, adm.dj_user)
@@ -85,6 +90,18 @@ def log_out(request):
 
 def logged_in(request):
     return 'user_info' in request.session and request.session['user_info'] != ''
+
+
+def avatar_url(user):
+    if user['avatar']:
+        return 'https://cdn.discordapp.com/avatars/{uid}/{hash}.{ext}'.format(
+            uid=user['id'], hash=user['avatar'],
+            ext='gif' if user['id'].startswith('a_') else 'jpg'
+        )
+    else:
+        return 'embed/avatars/{discriminator_mod}.png'.format(
+            discriminator_mod=str(int(user['discriminator']) % 5)
+        )
 
 
 class BotCommandEntryViewSet(viewsets.ModelViewSet):

@@ -10,7 +10,7 @@ class DiscordAdmin(models.Model):
     nick = models.CharField(max_length=30)
     enabled = models.BooleanField(default=True)
     timestamp = models.DateTimeField(default=datetime.now, editable=False)
-    dj_user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    dj_user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, verbose_name='Django User')
 
     def __str__(self):
         return self.nick

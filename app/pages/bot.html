@@ -1,30 +1,30 @@
 {% extends 'base_hero.html' %}
 {% block title %}AlexisBot - Hace de todo :${% endblock %}
 {% block hero_title %}
-  <figure class="image is-128x128" style="margin:0 auto 1rem auto">
+  <figure style="margin:0 auto 1rem auto">
     <img src="https://cdn.discordapp.com/avatars/397855139005988864/ceff68eac0dcca56f440275907a61bab.png?size=256"
-       alt="Ávatar de AlexisBot" class="img-circle">
+       alt="Ávatar de AlexisBot" class="img-circle is-128x128" >
   </figure>
   AlexisBot
 {% endblock %}
 {% block hero_subtitle %}
   Desde Chile, con amor y
-  <img src="https://discordapp.com/api/emojis/360155323970879498.png" style="width:1.5rem;vertical-align: bottom" />
+  <img src="https://cdn.discordapp.com/emojis/360155323970879498.png" class="emoji" />
 {% endblock %}
 {% block hero_content %}
-  <a href="https://discordapp.com/oauth2/authorize?client_id=397855139005988864&scope=bot" class="button">
+  <a href="https://discordapp.com/oauth2/authorize?client_id=397855139005988864&scope=bot" class="btn btn-light">
     <i class="fab fa-discord"></i> &nbsp;Agrégalo a tu servidor
   </a>
-  <a href="https://github.com/jkcgs/alexis-bot" class="button">
+  <a href="https://github.com/jkcgs/alexis-bot" class="btn btn-light">
     <i class="fab fa-github"></i> &nbsp;Repositorio
   </a>
-  <a href="{% url 'pages' 'commands' %}" class="button">
-    Comandos
+  <a href="{% url 'pages' 'commands' %}" class="btn btn-light">
+    <i class="fas fa-terminal"></i> &nbsp;Comandos
   </a>
 {% endblock %}
 {% block content %}
-  <div class="columns is-mobile is-centered">
-    <div class="column is-two-thirds is-narrow has-text-justified content">
+  <div class="row justify-content-md-center">
+    <div class="col-lg-8 center-block is-narrow text-justify content">
       <p>
         ¿Me creerían si les dijera que pueden tener en su server un bot que puede hacer cosas que no te imaginarías
         que haría? Yo tampoco, así que no las hace. Comandos básicos como ver el clima y obtener perritos y gatitos

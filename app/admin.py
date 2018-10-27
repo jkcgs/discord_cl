@@ -11,6 +11,10 @@ class CustomPageAdmin(MarkdownxModelAdmin):
     date_hierarchy = 'created_on'
 
 
-admin.site.register(DiscordAdmin)
+class DiscordAdminAdmin(admin.ModelAdmin):
+    list_display = ('nick', 'dj_user', 'userid', 'timestamp', 'enabled')
+
+
+admin.site.register(DiscordAdmin, DiscordAdminAdmin)
 admin.site.register(BotCommandEntry)
 admin.site.register(CustomPage, CustomPageAdmin)

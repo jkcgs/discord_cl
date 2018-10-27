@@ -1,24 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'base_hero.html' %}
 {% block title %}Reglas del servidor{% endblock %}
-{% block header %}
-  <section class="hero is-dark is-bold">
-    <div class="hero-body">
-      <div class="container has-text-centered">
-        <h1 class="title">
-          Reglas generales del servidor
-        </h1>
-        <h2 class="subtitle">
-          ¡Pórtate bien! Nuestra meta es pasarla bien y evitar los malos ratos.
-        </h2>
-        <p><em>Última actualización: 29 de julio de 2018, 19:45.</em></p>
-      </div>
-    </div>
-  </section>
-{% endblock %}
+{% block hero_title %}Reglas generales del servidor{% endblock %}
+{% block hero_subtitle %}¡Pórtate bien! Nuestra meta es pasarla bien y evitar los malos ratos.{% endblock %}
+{% block hero_content %}<em>Última actualización: 29 de julio de 2018, 19:45.</em>{% endblock %}
+
 {% block content %}
-<div class="columns is-mobile is-centered">
-  <div class="column is-two-thirds is-narrow has-text-justified content">
-    <ol class="is-size-6">
+<div class="row justify-content-md-center">
+  <div class="col-lg-8 text-justify">
+    <ol>
       <li>
         <strong>Usa el sentido común.</strong>
       </li>
@@ -54,20 +43,19 @@
         Nos reservamos el derecho de admisión y de eliminar contenido sin previo aviso (dando la respectiva razón).
       </li>
     </ol>
-    <article class="message is-spaced-top">
-      <div class="message-body">
-        Cualquier otra acción que pueda ser considerada molesta o no adecuada para la sana convivencia dentro del
-        servidor, podrá ser considerada como objeto de sanción. Las reglas y sanciones correspondientes serán aplicadas
-        dependiendo de la gravedad del hecho.
-      </div>
-    </article>
+    <div class="alert alert-secondary">
+      Cualquier otra acción que pueda ser considerada molesta o no adecuada para la sana convivencia dentro del
+      servidor, podrá ser considerada como objeto de sanción. Las reglas y sanciones correspondientes serán aplicadas
+      dependiendo de la gravedad del hecho.
+    </div>
   </div>
 </div>
 
-<div class="columns is-mobile is-centered">
-  <div class="column is-two-thirds is-narrow has-text-justified content">
-    <h3 id="english">English version</h3>
-    <ol class="is-size-6">
+<div class="row justify-content-md-center">
+  <div class="col col-8 text-justify">
+    <hr>
+    <h3 id="english" class="mb-3">English version</h3>
+    <ol>
       <li>
         <strong>Use your common sense.</strong>
       </li>
@@ -104,12 +92,10 @@
         given proper justification.
       </li>
     </ol>
-    <article class="message is-spaced-top">
-      <div class="message-body">
+    <div class="alert alert-secondary">
         Any other action deemed annoying or inadequate for the convivence inside the server, could be object of
         sanction. Rules will be applied depending on the severity of the situation and the staff’s discretion.
-      </div>
-    </article>
+    </div>
   </div>
 </div>
 {% endblock %}

@@ -5,54 +5,69 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ title }}{% endblock %}</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css"
         integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'style.css' %}">
   {% block head %}{% endblock %}
 </head>
 <body>
-<nav class="navbar is-fixed-top is-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="container">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="/">
-        Discord.CL
-      </a>
-      <span class="navbar-burger burger" data-target="navbarMenuHeroA">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-    </div>
-    <div id="navbarMenuHeroA" class="navbar-menu">
-      <div class="navbar-end">
-        <a href="/" class="navbar-item{% if pagename == "index" %} is-active{% endif %}">
-          Inicio
-        </a>
-        <a href="{% url 'pages' 'rules' %}" class="navbar-item{% if pagename == "rules" %} is-active{% endif %}">
-          Reglas
-        </a>
-        <a href="{% url 'pages' 'bot' %}" class="navbar-item{% if pagename == "bot" %} is-active{% endif %}">
-          AlexisBot
-        </a>
-          {% if not request.session.logged %}
-              <a href="{% url 'oauth_login' %}" class="navbar-item">
-                Login
-              </a>
-          {% else %}
-              {% if request.user.is_authenticated  %}
-                  <a href="{% url 'admin:index' %}" class="navbar-item">
-                    Admin
-                  </a>
-              {% endif %}
+    <a class="navbar-brand" href="/">
+      {% if guild_icon %}
+        <img src="{{ guild_icon }}" class="d-inline-block align-top guild-brand" alt="">
+      {% endif %}
+      Discord.CL
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main"
+            aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-              <a href="{% url 'logout' %}" class="navbar-item">
-                <img src="{{ avatar }}" class="is-24x24" alt="Avatar" title="{{ dsuser }}">
-                  &nbsp;Logout
+    <div class="collapse navbar-collapse" id="navbar-main">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item{% if request.path == '/' %} active{% endif %}">
+          <a href="/" class="nav-link">
+            Inicio
+          </a>
+        </li>
+        <li class="nav-item{% if request.path == '/rules' %} active{% endif %}">
+          <a href="{% url 'pages' 'rules' %}" class="nav-link">
+            Reglas
+          </a>
+        </li>
+        <li class="nav-item{% if request.path == '/bot' %} active{% endif %}">
+          <a href="{% url 'pages' 'bot' %}" class="nav-link">
+            AlexisBot
+          </a>
+        </li>
+        {% if not request.session.logged %}
+          <li class="nav-item">
+            <a href="{% url 'oauth_login' %}" class="nav-link">
+              Login
+            </a>
+          </li>
+        {% else %}
+          {% if request.user.is_authenticated  %}
+            <li class="nav-item">
+              <a href="{% url 'admin:index' %}" class="nav-link">
+                Admin
               </a>
+            </li>
           {% endif %}
-      </div>
+
+          <li class="nav-item">
+            <a href="{% url 'logout' %}" class="nav-link">
+              <img src="{{ request.session.avatar }}" class="avatar-menu" alt="Avatar" title="{{ request.session.username }}">
+                &nbsp;Logout
+            </a>
+          </li>
+        {% endif %}
+      </ul>
     </div>
+
   </div>
 </nav>
 
@@ -68,7 +83,8 @@
 
 <footer class="footer">
   <div class="container">
-    <div class="content has-text-centered">
+    <hr>
+    <div class="content text-center">
       <p>
         Discord.cl &copy; {{ current_date.year }}<br>
         Esta página no está relacionada con <a href="https://discordapp.com/">Discord</a>.
@@ -77,6 +93,7 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap.native/2.0.24/bootstrap-native.min.js"></script>
 <script src="{% static 'script.js' %}"></script>
 {% block footer %}{% endblock %}
 </body>

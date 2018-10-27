@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'app.apps.MainAppConfig',
     'rest_framework',
     'markdownx',
+    'background_task',
 ]
 
 MIDDLEWARE = [
@@ -70,7 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'app.context.session_context',
+                'discord_cl.utils.ctx'
             ],
         },
     },
@@ -140,4 +141,7 @@ STATICFILES_DIRS = [
 # Discord integration config
 DISCORD_CLIENT_ID = ''
 DISCORD_CLIENT_SECRET = ''
+DISCORD_BOT_SECRET = ''
+DISCORD_GUILD_ID = ''
+DISCORD_GUILD_DETAILS = None
 DISCORD_REDIRECT_URI = 'http://127.0.0.1:8000/oauth/return'

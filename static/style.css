@@ -15,3 +15,78 @@ ol.padded li:not(:last-child) {
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
+
+.is-128x128 {
+    width: 128px;
+    height: 128px;
+}
+
+.avatar-menu {
+    width: 29px;
+    float: left;
+    -webkit-border-radius: 20%;
+    -moz-border-radius: 20%;
+    border-radius: 20%;
+
+    position: relative;
+    top: -1px;
+    padding-right: 3px;
+}
+
+.bg-dark {
+    background-color: #363636 !important;
+}
+
+.bg-gdark {
+    background-image: linear-gradient(141deg,#1f191a 0,#363636 71%,#46403f 100%);
+}
+
+.guild-brand {
+    width: 32px;
+    height: 32px;
+    margin-right: 0.5rem;
+    -webkit-border-radius: 20%;
+    -moz-border-radius: 20%;
+    border-radius: 20%;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.navbar .nav-link {
+    padding: 0.85rem 0.7rem !important;
+}
+
+.navbar-brand {
+    padding: 0.52rem 1rem;
+}
+
+.nav-item.active a {
+    background: #292929;
+}
+
+.navbar-toggler {
+    margin-right: 1rem;
+    padding: .25rem .5rem;
+    border: 0;
+}
+
+.navbar-toggler-icon {
+    width: 24px;
+}
+
+@media (max-width: 767.98px) {
+    .collapse:not(.show):not(.in) {
+        display: none !important;
+    }
+
+    .collapse:not(.show).in {
+        display: block !important;
+    }
+}
+
+.emoji {
+    width: 1.2em;
+    vertical-align: text-bottom;
+}

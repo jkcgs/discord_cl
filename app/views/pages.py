@@ -34,7 +34,6 @@ def pages(request, page_name='index'):
     return render(request, base_file, {
         'title': title,
         'content': text,
-        'pagename': page_name,
         'current_date': datetime.now()
     }, status=status)
 

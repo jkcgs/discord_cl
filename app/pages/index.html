@@ -1,39 +1,30 @@
-{% extends 'base.html' %}
+{% extends 'base_hero.html' %}
 {% block title %}Discord.cl{% endblock %}
-{% block header %}
-  <section class="hero is-dark is-bold">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Reddit Chile's Discord
-        </h1>
-        <h2 class="subtitle">
-          ¡EL server para Chile!
-        </h2>
-        <p><a class="button is-medium is-outlined" href="https://discord.gg/chile">¡Únete!</a></p>
-      </div>
-    </div>
-  </section>
+
+{% block hero_title %}Reddit Chile's Discord{% endblock %}
+{% block hero_subtitle %}¡EL server para Chile!{% endblock %}
+{% block hero_content %}
+  <a class="btn btn-light" href="https://discord.gg/chile">¡Únete!</a>
 {% endblock %}
+{% block hero_classes %}text-left{% endblock %}
+
 {% block content %}
-  <div class="columns is-mobile is-centered">
-    <div class="column is-two-thirds">
-      <div class="content">
-        <h1>¿Qué es Discord?</h1>
-        <p>
-          Discord es una aplicación de chat y video principalmente destinada a jugadores, pero que con el tiempo se ha ido
-          extendido a cientos de comunidades online, como la nuestra, que es el
-          <a href="https://reddit.com/r/chile" target="_blank">subreddit de Chile</a>.
-        </p>
-        <h1>¿Quiénes somos?</h1>
-        <p>
-            Somos parte de la comunidad del <a href="https://www.reddit.com/r/chile">subreddit de Chile</a>, y discutimos sobre
-            muchas cosas, como de nuestro país, de juegos, de tecnología, series, entre otros. Nuestro principal objetivo es
-            ser un lugar para reunirnos como compatriotas, y compartir información que nos es relevante y nos interesa.
-        </p>
-      </div>
+  <div class="row">
+    <div class="col-md-8">
+      <h1>¿Qué es Discord?</h1>
+      <p>
+        Discord es una aplicación de chat y video principalmente destinada a jugadores, pero que con el tiempo se ha ido
+        extendido a cientos de comunidades online, como la nuestra, que es el
+        <a href="https://reddit.com/r/chile" target="_blank">subreddit de Chile</a>.
+      </p>
+      <h1>¿Quiénes somos?</h1>
+      <p>
+          Somos parte de la comunidad del <a href="https://www.reddit.com/r/chile">subreddit de Chile</a>, y discutimos sobre
+          muchas cosas, como de nuestro país, de juegos, de tecnología, series, entre otros. Nuestro principal objetivo es
+          ser un lugar para reunirnos como compatriotas, y compartir información que nos es relevante y nos interesa.
+      </p>
     </div>
-    <div class="column is-one-third">
+    <div class="col-md-4">
       <iframe src="https://discordapp.com/widget?id=198944348379938816&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
     </div>
   </div>
