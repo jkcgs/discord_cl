@@ -118,6 +118,7 @@ También puedes [aumentar la seguridad de tu servidor](https://support.discordap
         <field name="slug">rules</field>
         <field name="template">hero</field>
         <field name="content">
+<![CDATA[
 1. **Usa el sentido común.**
 2. Conversación sólo en Español e Inglés (éste último de preferencia en *#english*).
 3. Respeta a todos por igual. El (auto) doxxing está completamente prohibido.
@@ -167,6 +168,7 @@ given proper justification.
     Any other action deemed annoying or inadequate for the convivence inside the server, could be object of
     sanction. Rules will be applied depending on the severity of the situation and the staff’s discretion.
 </div>
+]]>
         </field>
     </object>
     <object pk="1002" model="app.CustomPage">
