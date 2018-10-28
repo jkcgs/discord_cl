@@ -3,7 +3,7 @@ from datetime import datetime
 from os import path
 
 from django.shortcuts import render, redirect
-from markdown import markdown
+from markdownx.utils import markdownify
 
 from app.models import CustomPage
 from discord_cl.settings import BASE_DIR
@@ -16,26 +16,29 @@ def pages(request, page_name='index'):
     page_path_md = path.join(BASE_DIR, 'app', 'pages', page_name + '.md')
     page_path_html = path.join(BASE_DIR, 'app', 'pages', page_name + '.html')
     title = page_name.replace('_', ' ').replace('-', ' ').title()
+    data = {'title': title, 'current_date': datetime.now(), 'content': ''}
 
     if path.exists(page_path_md):
         input_file = codecs.open(page_path_md, mode="r", encoding="utf-8").read()
-        text = markdown(input_file)
+        data['content'] = markdownify(input_file)
     elif path.exists(page_path_html):
         base_file = path.basename(page_path_html)
-        text = ''
     else:
         try:
             page_custom = CustomPage.objects.get(slug=page_name)
-            title = page_custom.title
-            text = markdown(page_custom.content)
+            data['title'] = page_custom.title
+            data['content'] = markdownify(page_custom.content)
+
+            if page_custom.template == 'hero':
+                base_file = 'base_hero.html'
+                data['icon_url'] = page_custom.icon_url
+                data['subtitle'] = page_custom.subtitle
+                data['description'] = markdownify(page_custom.description)
+
         except CustomPage.DoesNotExist:
             return handler404(request, None)
 
-    return render(request, base_file, {
-        'title': title,
-        'content': text,
-        'current_date': datetime.now()
-    }, status=status)
+    return render(request, base_file, data, status=status)
 
 
 def index(request):

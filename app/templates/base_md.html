@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-  <div class="columns is-mobile is-centered">
-    <div class="column is-two-thirds is-narrow has-text-justified content">
-      <div class="content">
+  <div class="row justify-content-md-center">
+    <div class="col-8 mt-3">
+      {% if title %}<h2 class="mb-4">{{ title }}</h2>{% endif %}
+      <div class="text-justify">
         {{ content | safe }}
       </div>
     </div>

@@ -3,14 +3,33 @@
   <div class="jumbotron-fluid bg-gdark text-light mb-5 pt-4 {% block hero_classes %}text-center{% endblock %}">
     <div class="container">
       <h1 class="display-5">
-        {% block hero_title %}{% endblock %}
+        {% block hero_title %}
+          {% if icon_url %}
+            <figure style="margin:0 auto 1rem auto">
+              <img src="{{ icon_url }}"
+                 alt="Page icon" class="img-circle is-128x128" >
+            </figure>
+          {% endif %}
+          {% if title %}{{ title }}{% endif %}
+        {% endblock %}
       </h1>
       <p class="lead">
-        {% block hero_subtitle %}{% endblock %}
+        {% block hero_subtitle %}
+          {% if subtitle %}{{ subtitle | safe }}{% endif %}
+        {% endblock %}
       </p>
       <div class="pt-2 pb-4">
-        {% block hero_content %}{% endblock %}
+        {% block hero_content %}
+          {% if description %}{{ description|safe }}{% endif %}
+        {% endblock %}
       </div>
+    </div>
+  </div>
+{% endblock %}
+{% block content %}
+  <div class="row justify-content-md-center">
+    <div class="col-8 mt-3 text-justify">
+      {{ content | safe }}
     </div>
   </div>
 {% endblock %}

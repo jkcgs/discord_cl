@@ -1,6 +1,5 @@
 Django==2.1.2
 requests_oauthlib==0.8.0
-markdown==2.6.11
 djangorestframework==3.8.2
 django-markdownx==2.0.25
 django-background-tasks==1.2.0

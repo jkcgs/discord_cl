@@ -35,12 +35,21 @@ class BotCommandEntry(models.Model):
 
 
 class CustomPage(models.Model):
+    POST_TYPES = (
+        ('P1', 'Normal'),
+        ('P2', 'Hero')
+    )
+
     author = models.ForeignKey(DiscordAdmin, null=True, on_delete=models.SET_NULL)
-    title = models.CharField(max_length=64)
-    slug = models.SlugField(max_length=128, unique=True)
+    title = models.CharField(max_length=64, default='')
+    subtitle = models.CharField(max_length=256, default='')
+    description = MarkdownxField(default='')
+    slug = models.SlugField(max_length=128, unique=True, null=False)
     content = MarkdownxField()
-    updated_on = models.DateField(auto_now=True)
-    created_on = models.DateField(auto_now_add=True)
+    icon_url = models.URLField(verbose_name='Page icon URL', null=True)
+    template = models.CharField(max_length=2, default='P1', choices=POST_TYPES)
+    updated_on = models.DateTimeField(auto_now=True, null=True)
+    created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = 'Custom Page'
