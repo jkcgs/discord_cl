@@ -20,6 +20,6 @@ urlpatterns = [
 handler404 = 'app.views.pages.handler404'
 
 # Load Guild data
-if len(sys.argv) > 1 and sys.argv[1] == 'runserver':
+if len(sys.argv) > 1 and sys.argv[1] == 'runserver' or sys.argv[0] != 'python':
     get_guild()
     get_guild_sched(schedule=60)
