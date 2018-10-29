@@ -29,7 +29,7 @@ def pages(request, page_name='index'):
             data['title'] = page_custom.title
             data['content'] = markdownify(page_custom.content)
 
-            if page_custom.template == 'hero':
+            if page_custom.template == 'P2':
                 base_file = 'base_hero.html'
                 data['icon_url'] = page_custom.icon_url
                 data['subtitle'] = page_custom.subtitle
