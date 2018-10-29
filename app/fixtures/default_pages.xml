@@ -116,7 +116,7 @@ También puedes [aumentar la seguridad de tu servidor](https://support.discordap
         <field name="subtitle">¡Pórtate bien! Nuestra meta es pasarla bien y evitar los malos ratos.</field>
         <field name="description">*Última actualización: 29 de julio de 2018, 19:45.*</field>
         <field name="slug">rules</field>
-        <field name="template">hero</field>
+        <field name="template">P2</field>
         <field name="content">
 <![CDATA[
 1. **Usa el sentido común.**
@@ -193,7 +193,7 @@ Desde Chile, con amor y <img src="https://cdn.discordapp.com/emojis/360155323970
 ]]>
         </field>
         <field name="slug">bot</field>
-        <field name="template">hero</field>
+        <field name="template">P2</field>
         <field name="icon_url">https://cdn.discordapp.com/avatars/397855139005988864/ceff68eac0dcca56f440275907a61bab.png?size=256</field>
         <field name="content">
 ¿Me creerían si les dijera que pueden tener en su server un bot que puede hacer cosas que no te imaginarías

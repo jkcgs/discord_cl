@@ -40,7 +40,7 @@ class CustomPage(models.Model):
         ('P2', 'Hero')
     )
 
-    author = models.ForeignKey(DiscordAdmin, null=True, on_delete=models.SET_NULL)
+    author = models.ForeignKey(DiscordAdmin, null=True, on_delete=models.SET_NULL, blank=True)
     title = models.CharField(max_length=64, default='')
     subtitle = models.CharField(max_length=256, default='', null=True, blank=True)
     description = MarkdownxField(default='', null=True, blank=True)
