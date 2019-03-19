@@ -1,10 +1,7 @@
-import sys
-
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework import routers
 from app.views import session
-from .utils import get_guild_sched, get_guild
 
 router = routers.DefaultRouter()
 router.register(r'^commands', session.BotCommandEntryViewSet)
@@ -18,8 +15,3 @@ urlpatterns = [
 ]
 
 handler404 = 'app.views.pages.handler404'
-
-# Load Guild data
-if len(sys.argv) > 1 and sys.argv[1] == 'runserver' or sys.argv[0] != 'python':
-    get_guild()
-    get_guild_sched(schedule=60)

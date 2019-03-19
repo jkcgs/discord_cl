@@ -2,7 +2,7 @@ import codecs
 from datetime import datetime
 from os import path
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from markdownx.utils import markdownify
 
 from app.models import CustomPage
@@ -24,19 +24,15 @@ def pages(request, page_name='index'):
     elif path.exists(page_path_html):
         base_file = path.basename(page_path_html)
     else:
-        try:
-            page_custom = CustomPage.objects.get(slug=page_name)
-            data['title'] = page_custom.title
-            data['content'] = markdownify(page_custom.content)
+        page_custom = get_object_or_404(CustomPage, slug=page_name)
+        data['title'] = page_custom.title
+        data['content'] = markdownify(page_custom.content)
 
-            if page_custom.template == 'P2':
-                base_file = 'base_hero.html'
-                data['icon_url'] = page_custom.icon_url
-                data['subtitle'] = page_custom.subtitle
-                data['description'] = markdownify(page_custom.description)
-
-        except CustomPage.DoesNotExist:
-            return handler404(request, None)
+        if page_custom.template == 'P2':
+            base_file = 'base_hero.html'
+            data['icon_url'] = page_custom.icon_url
+            data['subtitle'] = page_custom.subtitle
+            data['description'] = markdownify(page_custom.description)
 
     return render(request, base_file, data, status=status)
 
@@ -49,7 +45,7 @@ def alexis_redir(_):
     return redirect('/bot')
 
 
-def handler404(request, _):
+def handler404(request, exception, template_name="404.html"):
     return pages(request, page_name='404')
 
 
