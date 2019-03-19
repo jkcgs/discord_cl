@@ -11,6 +11,7 @@ urlpatterns = [
     path('pages/alexis', pages.alexis_redir),
     path('alexis', pages.alexis_redir),
     path('manage/pages', manage.pages, name='mgr_pages'),
+    path('api/commands', manage.commands, name='commands'),
     url(r'^(?P<page_name>[\w\-_]+)$', pages.pages, name='pages'),
     url(r'^pages/(?P<page_name>[\w\-_]+)$', pages.pages_redirect, name='pages_redir'),
 ]

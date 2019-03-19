@@ -4,16 +4,14 @@ import sys
 
 from django.contrib.auth import login, logout
 from django.http import HttpResponseBadRequest, HttpResponseForbidden
-from rest_framework import viewsets
 
-from app.serializers import BotCommandEntrySerializer
 from django.shortcuts import redirect
 from django.conf import settings
 
 from oauthlib.oauth2 import InvalidGrantError
 from requests_oauthlib import OAuth2Session
 
-from app.models import DiscordAdmin, BotCommandEntry
+from app.models import DiscordAdmin
 
 api_base = 'https://discordapp.com/api/v6'
 client_id = settings.DISCORD_CLIENT_ID
@@ -102,8 +100,3 @@ def avatar_url(user):
         return 'embed/avatars/{discriminator_mod}.png'.format(
             discriminator_mod=str(int(user['discriminator']) % 5)
         )
-
-
-class BotCommandEntryViewSet(viewsets.ModelViewSet):
-    queryset = BotCommandEntry.objects.all()
-    serializer_class = BotCommandEntrySerializer

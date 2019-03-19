@@ -38,9 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.apps.MainAppConfig',
-    'rest_framework',
     'markdownx',
-    'background_task',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +58,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'app', 'pages')
         ]
         ,
@@ -71,7 +68,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'discord_cl.utils.ctx'
             ],
         },
     },
@@ -109,12 +105,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
@@ -143,6 +133,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, "collected_static")
 DISCORD_CLIENT_ID = ''
 DISCORD_CLIENT_SECRET = ''
 DISCORD_BOT_SECRET = ''
-DISCORD_GUILD_ID = ''
-DISCORD_GUILD_DETAILS = None
 DISCORD_REDIRECT_URI = 'http://127.0.0.1:8000/oauth/return'
